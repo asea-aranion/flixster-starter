@@ -6,9 +6,7 @@ import MovieCard from "./MovieCard";
 const App = () => {
     return (
         <>
-            <MovieList>
-            
-            </MovieList>
+            <MovieList></MovieList>
         </>
     );
 };

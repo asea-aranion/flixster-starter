@@ -12,3 +12,63 @@
         flex-direction: column;
     }
 }
+
+.movie-list {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 2rem;
+    margin: 2rem;
+}
+
+.movie-card {
+    width: 15vw;
+    position: relative;
+    transition: transform 0.25s ease;
+    overflow: hidden;
+}
+
+.movie-card:hover {
+    transform: scale(1.1);
+}
+
+.movie-card img {
+    width: 100%;
+}
+
+.movie-info {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transform: translateY(100%);
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-end;
+    align-items: flex-start;
+    color: white;
+    background-image: linear-gradient(to top, black, transparent);
+    overflow: hidden;
+    transition: transform 0.25s ease;
+    margin: 0;
+    padding: 0;
+}
+
+.movie-card:hover .movie-info {
+    transform: translateY(0);
+}
+
+.movie-info h3 {
+    margin: 0;
+    padding: 0 1rem;
+}
+
+.rating-info {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 1rem;
+}

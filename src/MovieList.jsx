@@ -1,48 +1,43 @@
 import { useEffect, useState } from "react";
+import MovieCard from "./MovieCard";
 
+// Container for movie cards and Load More button; handles data fetching
 const MovieList = () => {
-
-    const [loading, setLoading] = useState(true);
+    // array of fetched movies
     const [movieData, setMovieData] = useState(new Array());
 
+    // fetch movies from TMDb and load into movieData
     const fetchMovieData = () => {
-
-        setLoading(true);
-
         const url = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1&api_key=${import.meta.env.VITE_API_KEY}`;
         const options = {
             method: "GET",
             headers: {
-                accept: "application/json"
-            }
+                accept: "application/json",
+            },
         };
 
         fetch(url, options)
-            .then(response => response.json())
-            .then(json => {
-                setLoading(false);
-                setMovieData(movieData.concat(movieData, json.results));
+            .then((response) => response.json())
+            .then((json) => {
+                setMovieData([...movieData, ...json.results]);
             })
-            .catch(error =>
-                console.error(error)
-            )
-        
-    }
+            .catch((error) => console.error(error));
+    };
 
+    // fetch data on component mount
     useEffect(fetchMovieData, []);
 
+    // display a movie card for each movie in data
     return (
-        loading ? 
-        <main className="loading">
-            Loading
-        </main>
-        :
         <main className="movie-list">
-            {movieData.map(movie => 
-                <p>{movie.title}</p>
-            )}
+            {movieData.map((movie) => (
+                <MovieCard movie={movie} key={movie.id}></MovieCard>
+            ))}
+            <button className="load-more-button">
+
+            </button>
         </main>
     );
-}
+};
 
 export default MovieList;
