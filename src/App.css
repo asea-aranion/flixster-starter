@@ -1,28 +1,28 @@
 .App {
-  text-align: center;
+    text-align: center;
 }
 
 .App-header {
-  background-color: #282c34;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-evenly;
-  color: white;
-  padding: 20px;
+    background-color: #282c34;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    color: white;
+    padding: 20px;
 }
 
 @media (max-width: 600px) {
-  .movie-card {
-    width: 100%;
-  }
+    .movie-card {
+        width: 100%;
+    }
 
-  .search-bar {
-    flex-direction: column;
-    gap: 10px;
-  }
+    .search-bar {
+        flex-direction: column;
+        gap: 10px;
+    }
 
-  .search-bar form {
-    flex-direction: column;
-  }
+    .search-bar form {
+        flex-direction: column;
+    }
 }
