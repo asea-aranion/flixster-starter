@@ -1,8 +1,16 @@
 import { useState } from "react";
 import "./App.css";
+import MovieList from "./MovieList";
+import MovieCard from "./MovieCard";
 
 const App = () => {
-    return <div className="App"></div>;
+    return (
+        <>
+            <MovieList>
+            
+            </MovieList>
+        </>
+    );
 };
 
 export default App;
