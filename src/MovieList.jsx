@@ -3,12 +3,15 @@ import MovieCard from "./MovieCard";
 
 // Container for movie cards and Load More button; handles data fetching
 const MovieList = () => {
+
     // array of fetched movies
     const [movieData, setMovieData] = useState(new Array());
+    // number of next TMDb page with new movies
+    const [pageNum, setPageNum] = useState(1);
 
     // fetch movies from TMDb and load into movieData
     const fetchMovieData = () => {
-        const url = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1&api_key=${import.meta.env.VITE_API_KEY}`;
+        const url = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${pageNum}&api_key=${import.meta.env.VITE_API_KEY}`;
         const options = {
             method: "GET",
             headers: {
@@ -20,6 +23,7 @@ const MovieList = () => {
             .then((response) => response.json())
             .then((json) => {
                 setMovieData([...movieData, ...json.results]);
+                setPageNum(pageNum + 1);
             })
             .catch((error) => console.error(error));
     };
@@ -33,8 +37,8 @@ const MovieList = () => {
             {movieData.map((movie) => (
                 <MovieCard movie={movie} key={movie.id}></MovieCard>
             ))}
-            <button className="load-more-button">
-
+            <button className="load-more-button" onClick={fetchMovieData}>
+                Load more...
             </button>
         </main>
     );

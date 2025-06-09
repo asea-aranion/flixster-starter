@@ -72,3 +72,20 @@
     align-items: center;
     padding-left: 1rem;
 }
+
+.load-more-button {
+    width: 15vw;
+    height: 5vw;
+    background-color: rgb(51, 52, 106);
+    border: none;
+    border-radius: 0.2rem;
+    font-weight: bold;
+    font-family: inherit;
+    font-size: 24px;
+    transition: transform 0.25s ease;
+    color: white;
+}
+
+.load-more-button:hover {
+    transform: scale(1.1);
+}
