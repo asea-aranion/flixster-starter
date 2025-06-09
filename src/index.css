@@ -1,18 +1,4 @@
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-}
-
-button {
-    background-color: #282c34;
-    color: white;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #777;
-    color: white;
+    font-family: "Lato", sans-serif;
 }
