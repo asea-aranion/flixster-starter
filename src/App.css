@@ -149,7 +149,7 @@ h1 {
 .overlay {
     width: 100vw;
     height: 100vh;
-    background-color: rgba(30, 30, 30, 0.8);
+    background-color: rgba(0, 0, 0, 0.6);
     position: fixed;
     top: 0;
     left: 0;
@@ -158,8 +158,63 @@ h1 {
 .modal {
     width: 80vw;
     height: 80vh;
-    background-color: rgb(51, 52, 106);
     position: fixed;
     top: 10vh;
     left: 10vw;
+    overflow-y: scroll;
+    background-color: black;
+    box-shadow: 0px 10px 10px black;
 }
+
+.modal img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+    
+}
+
+.gradient-img-overlay {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-image: linear-gradient(to top, black, transparent);
+}
+
+.modal-info {
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    top: 0;
+    min-height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-end;
+    align-items: flex-start;
+    color: white;
+    padding-bottom: 2rem;
+}
+
+.modal-info-spacer {
+    height: 70vh;
+}
+
+.modal-info h2, .modal-info p {
+    padding: 0 5rem 0 2rem;
+}
+
+.runtime-release-container p {
+    padding: 0;
+}
+
+.runtime-release-container {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    gap: 1rem;
+    align-items: center;
+    padding: 0 5rem 0 2rem;
+}
+

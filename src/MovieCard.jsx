@@ -7,12 +7,13 @@ const MovieCard = (props) => {
     return (
         <div
             className="movie-card"
-            onClick={() => props.showModal(props.movie)}>
+            onClick={() => props.showModal(props.movie.id)}>
             {props.movie.poster_path == null ? (
                 <div className="card-background" />
             ) : (
                 <img
-                    src={`https://image.tmdb.org/t/p/w780/${props.movie.poster_path}`}></img>
+                    src={`https://image.tmdb.org/t/p/w780/${props.movie.poster_path}`}
+                    alt={`A poster for ${props.movie.title}`}></img>
             )}
 
             <div className="movie-info">

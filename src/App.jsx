@@ -13,8 +13,8 @@ const App = () => {
     // array of fetched movies
     const [movieData, setMovieData] = useState(Array());
 
-    // movie being shown in modal; null when modal is hidden
-    const [modalData, setModalData] = useState(null);
+    // id of movie being shown in modal; null when modal is hidden
+    const [modalDataId, setModalDataId] = useState(null);
 
     // called on change to searchTerm
     const updateSearch = () => {
@@ -79,13 +79,13 @@ const App = () => {
         }
     };
 
-    const showModal = (movieData) => {
-        setModalData(movieData);
+    const showModal = (movieId) => {
+        setModalDataId(movieId);
         document.querySelector("body").style.overflow = "hidden";
     };
 
     const hideModal = () => {
-        setModalData(null);
+        setModalDataId(null);
         document.querySelector("body").style.overflow = "scroll";
     };
 
@@ -104,7 +104,7 @@ const App = () => {
                 showModal={showModal}
                 hideModal={hideModal}></MovieList>
             <Modal
-                movie={modalData}
+                movieId={modalDataId}
                 hideModal={hideModal}></Modal>
         </>
     );
