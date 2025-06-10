@@ -3,6 +3,7 @@ import "./App.css";
 import MovieList from "./MovieList";
 import SearchBar from "./SearchBar";
 import Modal from "./Modal";
+import SortDropdown from "./SortDropdown";
 
 const App = () => {
     const [searchTerm, setSearchTerm] = useState("");
@@ -97,7 +98,11 @@ const App = () => {
 
     return (
         <>
+        <div className="filter-sort-bar">
             <SearchBar updateSearch={setSearchTerm}></SearchBar>
+            <SortDropdown movieData={movieData} setMovieData={setMovieData}></SortDropdown>
+        </div>
+            
             <MovieList
                 movieData={movieData}
                 fetchMovieData={displayMovies}

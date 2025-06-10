@@ -85,6 +85,15 @@ h1 {
     transform: scale(1.1);
 }
 
+.filter-sort-bar {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    margin: 2rem;
+}
+
 .search-bar {
     display: flex;
     flex-flow: row wrap;
@@ -93,7 +102,6 @@ h1 {
     width: 100%;
     box-sizing: border-box;
     gap: 2rem;
-    padding: 2rem;
 }
 
 .search-bar button {
@@ -138,11 +146,23 @@ h1 {
     background-color: transparent;
     padding-block: 0;
     padding-inline: 0;
-    font-size: 20px;
+    font-size: 16px;
     font-family: inherit;
 }
 
 .input-container input:focus-visible {
+    outline: none;
+}
+
+.dropdown {
+    padding: 0.4rem;
+    border: none;
+    font-family: inherit;
+    font-size: 16px;
+    border-radius: 0.2rem;
+}
+
+.dropdown:focus-visible {
     outline: none;
 }
 
