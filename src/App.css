@@ -1,3 +1,24 @@
+@media (max-width: 700px) {
+    .movie-card {
+        width: 40vw !important;
+    }
+}
+
+@media (max-width: 550px) {
+    .filter-sort-bar {
+        flex-flow: column nowrap !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .movie-card {
+        width: 80vw !important;
+    }
+    .movie-list {
+        margin: 10vw !important;
+    }
+}
+
 h1 {
     color: white;
     margin: 0;
@@ -97,8 +118,7 @@ footer p {
 }
 
 .load-more-button {
-    width: 15vw;
-    height: 5vw;
+    padding: 1rem 2rem;
     background-color: rgb(51, 52, 106);
     border: none;
     border-radius: 0.2rem;
