@@ -5,6 +5,8 @@ import SearchBar from "./SearchBar";
 import Modal from "./Modal";
 import SortDropdown from "./SortDropdown";
 import TMDBLogo from "./assets/tmdb_logo.svg";
+import FavoritesList from "./FavoritesList";
+import Sidebar from "./Sidebar";
 
 const App = () => {
     const [searchTerm, setSearchTerm] = useState("");
@@ -17,6 +19,18 @@ const App = () => {
 
     // id of movie being shown in modal; null when modal is hidden
     const [modalDataId, setModalDataId] = useState(null);
+
+    const [favorites, setFavorites] = useState(Array());
+
+    const [page, setPage] = useState("main");
+
+    const addToFavoriteIds = (id) => {
+        setFavorites((oldIds) => [...oldIds, id]);
+    };
+
+    const removeFromFavoriteIds = (id) => {
+        setFavorites(favorites.filter((element) => element !== id));
+    };
 
     // called on change to searchTerm
     const updateSearch = () => {
@@ -102,21 +116,39 @@ const App = () => {
             <header>
                 <h1>Flixster</h1>
             </header>
-            <div className="filter-sort-bar">
-                <SearchBar updateSearch={setSearchTerm}></SearchBar>
-                <SortDropdown
-                    movieData={movieData}
-                    setMovieData={setMovieData}></SortDropdown>
-            </div>
+            <main>
+                <Sidebar
+                    page={page}
+                    setPage={setPage}></Sidebar>
+                {page === "main" ? (
+                    <div className="page-container">
+                        <section className="filter-sort-bar">
+                            <SearchBar updateSearch={setSearchTerm}></SearchBar>
+                            <SortDropdown
+                                movieData={movieData}
+                                setMovieData={setMovieData}></SortDropdown>
+                        </section>
 
-            <MovieList
-                movieData={movieData}
-                fetchMovieData={displayMovies}
-                showModal={showModal}
-                hideModal={hideModal}></MovieList>
-            <Modal
-                movieId={modalDataId}
-                hideModal={hideModal}></Modal>
+                        <MovieList
+                            movieData={movieData}
+                            fetchMovieData={displayMovies}
+                            showModal={showModal}
+                            hideModal={hideModal}
+                            favorites={favorites}
+                            addFavorite={addToFavoriteIds}
+                            removeFavorite={removeFromFavoriteIds}></MovieList>
+                        <Modal
+                            movieId={modalDataId}
+                            hideModal={hideModal}></Modal>
+                    </div>
+                ) : page === "favorites" ? (
+                    <div className="page-container">
+                        <FavoritesList favorites={favorites}></FavoritesList>
+                    </div>
+                ) : (
+                    <div className="page-container"></div>
+                )}
+            </main>
             <footer>
                 <img
                     src={TMDBLogo}

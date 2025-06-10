@@ -1,24 +1,9 @@
 import ArrowUpwardRoundedIcon from "@mui/icons-material/ArrowUpwardRounded";
 import ArrowDownwardRoundedIcon from "@mui/icons-material/ArrowDownwardRounded";
 import HorizontalRuleRoundedIcon from "@mui/icons-material/HorizontalRuleRounded";
-import FavoriteBorderRoundedIcon from "@mui/icons-material/FavoriteBorderRounded";
-import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded";
-import { useEffect, useState } from "react";
 
 // Represents 1 movie; displays poster, title, and rating average
-const MovieCard = (props) => {
-    const [favorited, setFavorited] = useState(props.isFavorited);
-
-    const updateFavorite = () => {
-        if (!favorited) {
-            props.removeFavorite(props.movie);
-        } else {
-            props.addFavorite(props.movie);
-        }
-    };
-
-    useEffect(updateFavorite, [favorited]);
-
+const FavoriteMovieCard = (props) => {
     return (
         <div
             className="movie-card"
@@ -32,23 +17,6 @@ const MovieCard = (props) => {
             )}
 
             <div className="movie-info">
-                <div className="movie-card-button-container">
-                    {favorited ? (
-                        <FavoriteRoundedIcon
-                            sx={{ fontSize: "28px" }}
-                            onClick={(event) => {
-                                event.stopPropagation();
-                                setFavorited(false);
-                            }}></FavoriteRoundedIcon>
-                    ) : (
-                        <FavoriteBorderRoundedIcon
-                            sx={{ fontSize: "28px" }}
-                            onClick={(event) => {
-                                event.stopPropagation();
-                                setFavorited(true);
-                            }}></FavoriteBorderRoundedIcon>
-                    )}
-                </div>
                 <h3>{props.movie.title}</h3>
                 <div className="rating-info">
                     {props.movie.vote_average >= 7 ? (
@@ -65,4 +33,4 @@ const MovieCard = (props) => {
     );
 };
 
-export default MovieCard;
+export default FavoriteMovieCard;

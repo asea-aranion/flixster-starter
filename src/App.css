@@ -51,6 +51,38 @@ footer p {
     font-weight: bold;
 }
 
+main {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.page-container {
+    flex-grow: 5;
+    min-height: 100vh;
+}
+
+nav {
+    background-color: rgb(51, 52, 106);
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+nav button {
+    background-color: transparent;
+    border: none;
+    text-align: left;
+    padding: 1.5rem 2rem;
+    font-family: inherit;
+    font-weight: bold;
+    color: white;
+    font-size: 24px;
+    width: 100%;
+}
+
+nav button.selected {
+    background-color: rgb(75, 77, 139);
+}
+
 .movie-list {
     display: flex;
     flex-flow: row wrap;
@@ -79,6 +111,12 @@ footer p {
     width: 15vw;
     height: 253.02px;
     background-color: white;
+}
+
+.movie-card-button-container {
+    display: flex;
+    flex-flow: row nowrap;
+    margin: 0 0 0.8rem 1rem;
 }
 
 .movie-info {
