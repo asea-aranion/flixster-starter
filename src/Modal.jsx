@@ -80,11 +80,16 @@ const Modal = (props) => {
                                 sx={{ fontSize: "10px" }}></CircleRoundedIcon>
                             <p>{getDateString(details.release_date)}</p>
                         </div>
-                        <p>
-                            {details.genres
-                                .map((genre) => genre.name)
-                                .join(" | ")}
-                        </p>
+                        {details.genres ? (
+                            <p>
+                                {details.genres
+                                    .map((genre) => genre.name)
+                                    .join(" | ")}
+                            </p>
+                        ) : (
+                            <></>
+                        )}
+
                         <p>{details.overview}</p>
                         {details.video ? (
                             <iframe
