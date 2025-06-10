@@ -15,28 +15,27 @@ const Modal = (props) => {
     const fetchMovieDetails = () => {
         if (props.movieId != null) {
             setDetails(null);
-            const url = `https://api.themoviedb.org/3/movie/${props.movieId}?api_key=${import.meta.env.VITE_API_KEY}`
-        const options = {
-            method: "GET",
-            headers: {
-                accept: "application/json",
-            },
-        };
+            const url = `https://api.themoviedb.org/3/movie/${props.movieId}?api_key=${import.meta.env.VITE_API_KEY}`;
+            const options = {
+                method: "GET",
+                headers: {
+                    accept: "application/json",
+                },
+            };
 
-        fetch(url, options)
-            .then(response => response.json())
-            .then(json => setDetails(json))
+            fetch(url, options)
+                .then((response) => response.json())
+                .then((json) => setDetails(json));
         }
-        
-    }
+    };
 
     const getDateString = (date) => {
         return new Date(date).toLocaleString("en-US", {
             month: "long",
             day: "numeric",
-            year: "numeric"
-        })
-    }
+            year: "numeric",
+        });
+    };
 
     useEffect(fetchMovieDetails, [props.movieId]);
 
@@ -57,10 +56,15 @@ const Modal = (props) => {
                         <h2>{details.title}</h2>
                         <div className="runtime-release-container">
                             <p>{details.runtime} minutes</p>
-                            <CircleRoundedIcon sx={{ fontSize: "10px" }}></CircleRoundedIcon>
+                            <CircleRoundedIcon
+                                sx={{ fontSize: "10px" }}></CircleRoundedIcon>
                             <p>{getDateString(details.release_date)}</p>
                         </div>
-                        <p>{details.genres.map(genre => genre.name).join(" | ")}</p>
+                        <p>
+                            {details.genres
+                                .map((genre) => genre.name)
+                                .join(" | ")}
+                        </p>
                         <p>{details.overview}</p>
                     </div>
                 </div>

@@ -4,6 +4,7 @@ import MovieList from "./MovieList";
 import SearchBar from "./SearchBar";
 import Modal from "./Modal";
 import SortDropdown from "./SortDropdown";
+import TMDBLogo from "./assets/tmdb_logo.svg";
 
 const App = () => {
     const [searchTerm, setSearchTerm] = useState("");
@@ -98,11 +99,16 @@ const App = () => {
 
     return (
         <>
-        <div className="filter-sort-bar">
-            <SearchBar updateSearch={setSearchTerm}></SearchBar>
-            <SortDropdown movieData={movieData} setMovieData={setMovieData}></SortDropdown>
-        </div>
-            
+            <header>
+                <h1>Flixster</h1>
+            </header>
+            <div className="filter-sort-bar">
+                <SearchBar updateSearch={setSearchTerm}></SearchBar>
+                <SortDropdown
+                    movieData={movieData}
+                    setMovieData={setMovieData}></SortDropdown>
+            </div>
+
             <MovieList
                 movieData={movieData}
                 fetchMovieData={displayMovies}
@@ -111,6 +117,15 @@ const App = () => {
             <Modal
                 movieId={modalDataId}
                 hideModal={hideModal}></Modal>
+            <footer>
+                <img
+                    src={TMDBLogo}
+                    alt="Logo of The Movie Database"></img>
+                <p>
+                    This product uses the TMDB API but is not endorsed or
+                    certified by TMDB.
+                </p>
+            </footer>
         </>
     );
 };
