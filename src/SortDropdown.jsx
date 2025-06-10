@@ -26,7 +26,11 @@ const SortDropdown = (props) => {
             className="dropdown"
             onChange={sortMovieData}
             defaultValue="init">
-            <option value="init">Select an option</option>
+            <option
+                disabled={true}
+                value="init">
+                Select an option
+            </option>
             <option value="title">Title (A-Z)</option>
             <option value="date">Release date (newest-oldest)</option>
             <option value="votes">Vote average (highest-lowest)</option>

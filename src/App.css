@@ -22,6 +22,7 @@
 h1 {
     color: white;
     margin: 0;
+    font-family: "Jura", sans-serif;
 }
 
 header {
@@ -80,6 +81,7 @@ nav button {
     color: white;
     font-size: 24px;
     width: 100%;
+    font-family: "Jura", sans-serif;
 }
 
 nav button.selected {
