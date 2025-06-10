@@ -1,12 +1,12 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import MovieList from "./MovieList";
 import SearchBar from "./SearchBar";
 import Modal from "./Modal";
 import SortDropdown from "./SortDropdown";
 import TMDBLogo from "./assets/tmdb_logo.svg";
-import FavoritesList from "./FavoritesList";
 import Sidebar from "./Sidebar";
+import NoClickMovieList from "./NoClickMovieList";
 
 const App = () => {
     const [searchTerm, setSearchTerm] = useState("");
@@ -20,16 +20,29 @@ const App = () => {
     // id of movie being shown in modal; null when modal is hidden
     const [modalDataId, setModalDataId] = useState(null);
 
+    // array of json data for favorited movies
     const [favorites, setFavorites] = useState(Array());
 
+    // array of json data for watched movies
+    const [watched, setWatched] = useState(Array());
+
+    // current page (main/favorites/watched)
     const [page, setPage] = useState("main");
 
-    const addToFavoriteIds = (id) => {
-        setFavorites((oldIds) => [...oldIds, id]);
+    const addToFavorites = (movie) => {
+        setFavorites((oldElements) => [...oldElements, movie]);
     };
 
-    const removeFromFavoriteIds = (id) => {
-        setFavorites(favorites.filter((element) => element !== id));
+    const removeFromFavorites = (movie) => {
+        setFavorites(favorites.filter((element) => element !== movie));
+    };
+
+    const addToWatched = (movie) => {
+        setWatched((oldElements) => [...oldElements, movie]);
+    };
+
+    const removeFromWatched = (movie) => {
+        setWatched(watched.filter((element) => element !== movie));
     };
 
     // called on change to searchTerm
@@ -135,18 +148,25 @@ const App = () => {
                             showModal={showModal}
                             hideModal={hideModal}
                             favorites={favorites}
-                            addFavorite={addToFavoriteIds}
-                            removeFavorite={removeFromFavoriteIds}></MovieList>
+                            addFavorite={addToFavorites}
+                            removeFavorite={removeFromFavorites}
+                            watched={watched}
+                            addWatched={addToWatched}
+                            removeWatched={removeFromWatched}></MovieList>
                         <Modal
                             movieId={modalDataId}
                             hideModal={hideModal}></Modal>
                     </div>
                 ) : page === "favorites" ? (
                     <div className="page-container">
-                        <FavoritesList favorites={favorites}></FavoritesList>
+                        <NoClickMovieList
+                            movieData={favorites}></NoClickMovieList>
                     </div>
                 ) : (
-                    <div className="page-container"></div>
+                    <div className="page-container">
+                        <NoClickMovieList
+                            movieData={watched}></NoClickMovieList>
+                    </div>
                 )}
             </main>
             <footer>

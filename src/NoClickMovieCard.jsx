@@ -3,7 +3,7 @@ import ArrowDownwardRoundedIcon from "@mui/icons-material/ArrowDownwardRounded";
 import HorizontalRuleRoundedIcon from "@mui/icons-material/HorizontalRuleRounded";
 
 // Represents 1 movie; displays poster, title, and rating average
-const FavoriteMovieCard = (props) => {
+const NoClickMovieCard = (props) => {
     return (
         <div
             className="movie-card"
@@ -33,4 +33,4 @@ const FavoriteMovieCard = (props) => {
     );
 };
 
-export default FavoriteMovieCard;
+export default NoClickMovieCard;

@@ -13,7 +13,10 @@ const MovieList = (props) => {
                     showModal={props.showModal}
                     isFavorited={props.favorites.includes(movie)}
                     addFavorite={props.addFavorite}
-                    removeFavorite={props.removeFavorite}></MovieCard>
+                    removeFavorite={props.removeFavorite}
+                    isWatched={props.watched.includes(movie)}
+                    addWatched={props.addWatched}
+                    removeWatched={props.removeWatched}></MovieCard>
             ))}
             <button
                 className="load-more-button"

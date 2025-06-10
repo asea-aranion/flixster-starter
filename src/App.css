@@ -117,6 +117,7 @@ nav button.selected {
     display: flex;
     flex-flow: row nowrap;
     margin: 0 0 0.8rem 1rem;
+    gap: 1rem;
 }
 
 .movie-info {

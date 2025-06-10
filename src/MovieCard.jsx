@@ -3,21 +3,43 @@ import ArrowDownwardRoundedIcon from "@mui/icons-material/ArrowDownwardRounded";
 import HorizontalRuleRoundedIcon from "@mui/icons-material/HorizontalRuleRounded";
 import FavoriteBorderRoundedIcon from "@mui/icons-material/FavoriteBorderRounded";
 import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded";
+import VisibilityRoundedIcon from "@mui/icons-material/VisibilityRounded";
+import VisibilityOffRoundedIcon from "@mui/icons-material/VisibilityOffRounded";
 import { useEffect, useState } from "react";
 
 // Represents 1 movie; displays poster, title, and rating average
 const MovieCard = (props) => {
+    // own state variables to avoid setting parent's state during rendering
     const [favorited, setFavorited] = useState(props.isFavorited);
+    const [watched, setWatched] = useState(props.isWatched);
 
+    // toggles whether this movie is in App's favorites array
     const updateFavorite = () => {
+        // if just unfavorited, remove from array
         if (!favorited) {
             props.removeFavorite(props.movie);
+            // otherwise, add to array
         } else {
             props.addFavorite(props.movie);
         }
     };
 
+    // toggles whether this movie is in App's watched array
+    const updateWatched = () => {
+        // if just marked as not watched, remove from array
+        if (!watched) {
+            props.removeWatched(props.movie);
+            // otherwise, add to array
+        } else {
+            props.addWatched(props.movie);
+        }
+    };
+
+    // update App's state whenever heart icon is toggled
     useEffect(updateFavorite, [favorited]);
+
+    // update App's state whenever eye icon is toggled
+    useEffect(updateWatched, [watched]);
 
     return (
         <div
@@ -47,6 +69,21 @@ const MovieCard = (props) => {
                                 event.stopPropagation();
                                 setFavorited(true);
                             }}></FavoriteBorderRoundedIcon>
+                    )}
+                    {watched ? (
+                        <VisibilityRoundedIcon
+                            sx={{ fontSize: "28px" }}
+                            onClick={(event) => {
+                                event.stopPropagation();
+                                setWatched(false);
+                            }}></VisibilityRoundedIcon>
+                    ) : (
+                        <VisibilityOffRoundedIcon
+                            sx={{ fontSize: "28px" }}
+                            onClick={(event) => {
+                                event.stopPropagation();
+                                setWatched(true);
+                            }}></VisibilityOffRoundedIcon>
                     )}
                 </div>
                 <h3>{props.movie.title}</h3>
