@@ -9,7 +9,8 @@ const MovieList = (props) => {
             {props.movieData.map((movie) => (
                 <MovieCard
                     movie={movie}
-                    key={movie.id}></MovieCard>
+                    key={movie.id}
+                    showModal={props.showModal}></MovieCard>
             ))}
             <button
                 className="load-more-button"

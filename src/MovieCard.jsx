@@ -5,7 +5,9 @@ import HorizontalRuleRoundedIcon from "@mui/icons-material/HorizontalRuleRounded
 // Represents 1 movie; displays poster, title, and rating average
 const MovieCard = (props) => {
     return (
-        <div className="movie-card">
+        <div
+            className="movie-card"
+            onClick={() => props.showModal(props.movie)}>
             {props.movie.poster_path == null ? (
                 <div className="card-background" />
             ) : (

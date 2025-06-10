@@ -145,3 +145,21 @@ h1 {
 .input-container input:focus-visible {
     outline: none;
 }
+
+.overlay {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(30, 30, 30, 0.8);
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.modal {
+    width: 80vw;
+    height: 80vh;
+    background-color: rgb(51, 52, 106);
+    position: fixed;
+    top: 10vh;
+    left: 10vw;
+}

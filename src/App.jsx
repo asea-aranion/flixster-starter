@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./App.css";
 import MovieList from "./MovieList";
 import SearchBar from "./SearchBar";
+import Modal from "./Modal";
 
 const App = () => {
     const [searchTerm, setSearchTerm] = useState("");
@@ -11,6 +12,9 @@ const App = () => {
 
     // array of fetched movies
     const [movieData, setMovieData] = useState(Array());
+
+    // movie being shown in modal; null when modal is hidden
+    const [modalData, setModalData] = useState(null);
 
     // called on change to searchTerm
     const updateSearch = () => {
@@ -59,21 +63,30 @@ const App = () => {
     // fetch and display currentPage of either now playing movies or search results, appending to currentMovies
     // params are optional: default to state variables movieData and pageNum
     const displayMovies = (currentMovies, currentPage) => {
-
         // if search term is empty, load now playing
         if (searchTerm === "") {
             fetchNowPlaying(
                 currentMovies != undefined ? currentMovies : movieData,
                 currentPage != undefined ? currentPage : pageNum,
             );
-        
-        // otherwise, load movies whose titles contain searchTerm
+
+            // otherwise, load movies whose titles contain searchTerm
         } else {
             fetchSearchResults(
                 currentMovies != undefined ? currentMovies : movieData,
                 currentPage != undefined ? currentPage : pageNum,
             );
         }
+    };
+
+    const showModal = (movieData) => {
+        setModalData(movieData);
+        document.querySelector("body").style.overflow = "hidden";
+    };
+
+    const hideModal = () => {
+        setModalData(null);
+        document.querySelector("body").style.overflow = "scroll";
     };
 
     // load data on component mount
@@ -87,7 +100,12 @@ const App = () => {
             <SearchBar updateSearch={setSearchTerm}></SearchBar>
             <MovieList
                 movieData={movieData}
-                fetchMovieData={displayMovies}></MovieList>
+                fetchMovieData={displayMovies}
+                showModal={showModal}
+                hideModal={hideModal}></MovieList>
+            <Modal
+                movie={modalData}
+                hideModal={hideModal}></Modal>
         </>
     );
 };
