@@ -57,7 +57,10 @@ const MovieCard = (props) => {
                 <div className="movie-card-button-container">
                     {favorited ? (
                         <FavoriteRoundedIcon
-                            sx={{ fontSize: "28px" }}
+                            sx={{
+                                fontSize: "28px",
+                                color: "rgb(101, 96, 171)",
+                            }}
                             onClick={(event) => {
                                 event.stopPropagation();
                                 setFavorited(false);
@@ -72,7 +75,10 @@ const MovieCard = (props) => {
                     )}
                     {watched ? (
                         <VisibilityRoundedIcon
-                            sx={{ fontSize: "28px" }}
+                            sx={{
+                                fontSize: "28px",
+                                color: "rgb(101, 96, 171)",
+                            }}
                             onClick={(event) => {
                                 event.stopPropagation();
                                 setWatched(false);

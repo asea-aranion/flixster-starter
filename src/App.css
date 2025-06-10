@@ -4,7 +4,7 @@
     }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 730px) {
     .filter-sort-bar {
         flex-flow: column nowrap !important;
     }
@@ -30,6 +30,7 @@ header {
     top: 0;
     z-index: 1;
     padding: 1rem 2rem;
+    width: 100vw;
 }
 
 footer {
@@ -40,6 +41,7 @@ footer {
     align-items: center;
     gap: 2rem;
     padding: 1rem 2rem;
+    width: 100vw;
 }
 
 footer img {
@@ -59,6 +61,7 @@ main {
 .page-container {
     flex-grow: 5;
     min-height: 100vh;
+    width: calc(100vw - 20rem);
 }
 
 nav {
@@ -80,7 +83,7 @@ nav button {
 }
 
 nav button.selected {
-    background-color: rgb(75, 77, 139);
+    background-color: rgb(101, 96, 171);
 }
 
 .movie-list {
@@ -90,6 +93,11 @@ nav button.selected {
     align-items: center;
     gap: 2rem;
     margin: 2rem;
+}
+
+.message {
+    color: white;
+    text-align: center;
 }
 
 .movie-card {
@@ -178,7 +186,7 @@ nav button.selected {
     justify-content: center;
     align-items: center;
     gap: 4rem;
-    margin: 2rem;
+    padding: 2rem;
 }
 
 .search-bar {
@@ -302,7 +310,6 @@ nav button.selected {
     justify-content: flex-end;
     align-items: flex-start;
     color: white;
-    padding-bottom: 2rem;
 }
 
 .modal-info-spacer {
@@ -312,6 +319,11 @@ nav button.selected {
 .modal-info h2,
 .modal-info p {
     padding: 0 5rem 0 2rem;
+}
+
+.modal-info iframe {
+    border: none;
+    margin: 2rem;
 }
 
 .runtime-release-container p {

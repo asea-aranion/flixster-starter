@@ -25,7 +25,27 @@ const Modal = (props) => {
 
             fetch(url, options)
                 .then((response) => response.json())
-                .then((json) => setDetails(json));
+                .then((json) => setDetails(json))
+                .catch((error) => console.error(error));
+
+            const videosUrl = `https://api.themoviedb.org/3/movie/${props.movieId}/videos?language=en-US&api_key=${import.meta.env.VITE_API_KEY}`;
+
+            fetch(videosUrl, options)
+                .then((response) => response.json())
+                .then((json) => {
+                    for (let video of json.results) {
+                        if (
+                            video.type === "Trailer" &&
+                            video.site === "YouTube"
+                        ) {
+                            setDetails((old) => {
+                                return { ...old, video: video.key };
+                            });
+                            break;
+                        }
+                    }
+                })
+                .catch((error) => console.error(error));
         }
     };
 
@@ -66,6 +86,14 @@ const Modal = (props) => {
                                 .join(" | ")}
                         </p>
                         <p>{details.overview}</p>
+                        {details.video ? (
+                            <iframe
+                                width={560}
+                                height={315}
+                                src={`https://www.youtube.com/embed/${details.video}`}></iframe>
+                        ) : (
+                            <></>
+                        )}
                     </div>
                 </div>
             </div>
