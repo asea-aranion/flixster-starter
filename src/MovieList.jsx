@@ -19,7 +19,7 @@ const MovieList = ({ movieData, fetchMovieData, showModal, favorites, addFavorit
             ))}
             <button
                 className="load-more-button"
-                onClick={fetchMovieData}>
+                onClick={(event) => fetchMovieData()}>
                 Load more...
             </button>
         </main>
