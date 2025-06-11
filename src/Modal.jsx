@@ -1,21 +1,30 @@
 import { useEffect, useRef, useState } from "react";
 import CircleRoundedIcon from "@mui/icons-material/CircleRounded";
 
+// Overlay and modal with further movie details
 const Modal = (props) => {
+
+    // reference to transparent overlay div behind modal
     const overlayRef = useRef(null);
 
+    // detailed movie info (runtime, etc.)
     const [details, setDetails] = useState(null);
+
+    // YouTube video id for trailer
     const [videoKey, setVideoKey] = useState(null);
 
+    // hide modal if overlay itself (area outside modal) is clicked
     const handleOverlayClick = (event) => {
         if (event.target == overlayRef.current) {
             props.hideModal();
         }
     };
 
+    // get detailed movie data and YouTube id for a trailer from TMDb
     const fetchMovieDetails = () => {
         if (props.movieId != null) {
-            setDetails(null);
+
+            // set up and fetch from details endpoint (runtime not accessible from now playing or search)
             const url = `https://api.themoviedb.org/3/movie/${props.movieId}?api_key=${import.meta.env.VITE_API_KEY}`;
             const options = {
                 method: "GET",
@@ -29,11 +38,14 @@ const Modal = (props) => {
                 .then((json) => setDetails(json))
                 .catch((error) => console.error(error));
 
+            // set up and fetch from videos endpoint
             const videosUrl = `https://api.themoviedb.org/3/movie/${props.movieId}/videos?language=en-US&api_key=${import.meta.env.VITE_API_KEY}`;
 
             fetch(videosUrl, options)
                 .then((response) => response.json())
                 .then((json) => {
+
+                    // iterate over videos array, looking for first YouTube trailer
                     for (let video of json.results) {
                         if (
                             video.type === "Trailer" &&
@@ -48,6 +60,7 @@ const Modal = (props) => {
         }
     };
 
+    // reformat date from TMDb (e.g. 2025-05-07 to May 7, 2025)
     const getDateString = (date) => {
         return new Date(date).toLocaleString("en-US", {
             month: "long",
@@ -56,8 +69,10 @@ const Modal = (props) => {
         });
     };
 
+    // reload data whenever movie being displayed in modal changes
     useEffect(fetchMovieDetails, [props.movieId]);
 
+    // display modal after movie card is clicked (sets movieId) and after data is fetched
     if (props.movieId != null && details != null) {
         return (
             <div

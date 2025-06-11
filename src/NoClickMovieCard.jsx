@@ -2,7 +2,7 @@ import ArrowUpwardRoundedIcon from "@mui/icons-material/ArrowUpwardRounded";
 import ArrowDownwardRoundedIcon from "@mui/icons-material/ArrowDownwardRounded";
 import HorizontalRuleRoundedIcon from "@mui/icons-material/HorizontalRuleRounded";
 
-// Represents 1 movie; displays poster, title, and rating average
+// Represents 1 movie without modal onclick; displays poster, title, and rating average
 const NoClickMovieCard = (props) => {
     return (
         <div
