@@ -24,6 +24,10 @@ const Modal = (props) => {
     const fetchMovieDetails = () => {
         if (props.movieId != null) {
 
+            // clear old modal data
+            setDetails(null);
+            setVideoKey(null);
+
             // set up and fetch from details endpoint (runtime not accessible from now playing or search)
             const url = `https://api.themoviedb.org/3/movie/${props.movieId}?api_key=${import.meta.env.VITE_API_KEY}`;
             const options = {
