@@ -37,9 +37,9 @@ const SearchBar = (props) => {
                     type="text"
                     ref={searchInputRef}
                     onKeyDown={handleInputKeyDown}></input>
-                <button onClick={clearInput}>
-                    <CloseRoundedIcon></CloseRoundedIcon>
-                </button>
+                
+                <CloseRoundedIcon onClick={clearInput}></CloseRoundedIcon>
+                
             </div>
 
             <button

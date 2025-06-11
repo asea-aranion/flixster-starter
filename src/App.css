@@ -234,6 +234,14 @@ nav button.selected {
     transform: scale(1.1);
 }
 
+.search-bar svg {
+    transition: transform 0.25s ease;
+}
+
+.search-bar svg:hover {
+    transform: scale(1.1);
+}
+
 .input-container {
     flex-grow: 5;
     display: flex;
