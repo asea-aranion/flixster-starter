@@ -5,6 +5,7 @@ const Modal = (props) => {
     const overlayRef = useRef(null);
 
     const [details, setDetails] = useState(null);
+    const [videoKey, setVideoKey] = useState(null);
 
     const handleOverlayClick = (event) => {
         if (event.target == overlayRef.current) {
@@ -38,9 +39,7 @@ const Modal = (props) => {
                             video.type === "Trailer" &&
                             video.site === "YouTube"
                         ) {
-                            setDetails((old) => {
-                                return { ...old, video: video.key };
-                            });
+                            setVideoKey(video.key);
                             break;
                         }
                     }
@@ -91,11 +90,11 @@ const Modal = (props) => {
                         )}
 
                         <p>{details.overview}</p>
-                        {details.video ? (
+                        {videoKey ? (
                             <iframe
                                 width={560}
                                 height={315}
-                                src={`https://www.youtube.com/embed/${details.video}`}></iframe>
+                                src={`https://www.youtube.com/embed/${videoKey}`}></iframe>
                         ) : (
                             <></>
                         )}
