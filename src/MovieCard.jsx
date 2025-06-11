@@ -5,16 +5,12 @@ import FavoriteBorderRoundedIcon from "@mui/icons-material/FavoriteBorderRounded
 import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded";
 import VisibilityRoundedIcon from "@mui/icons-material/VisibilityRounded";
 import VisibilityOffRoundedIcon from "@mui/icons-material/VisibilityOffRounded";
-import { useEffect, useState } from "react";
 
 // Represents 1 movie; displays poster, title, and rating average
 const MovieCard = ({ movie, showModal, isFavorited, addFavorite, removeFavorite, isWatched, addWatched, removeWatched }) => {
-    // own state variables to avoid setting parent's state during rendering
-    const [favorited, setFavorited] = useState(isFavorited);
-    const [watched, setWatched] = useState(isWatched);
 
     // toggles whether this movie is in App's favorites array
-    const updateFavorite = () => {
+    const updateFavorite = (favorited) => {
         // if just unfavorited, remove from array
         if (!favorited) {
             removeFavorite(movie);
@@ -25,7 +21,7 @@ const MovieCard = ({ movie, showModal, isFavorited, addFavorite, removeFavorite,
     };
 
     // toggles whether this movie is in App's watched array
-    const updateWatched = () => {
+    const updateWatched = (watched) => {
         // if just marked as not watched, remove from array
         if (!watched) {
             removeWatched(movie);
@@ -34,12 +30,6 @@ const MovieCard = ({ movie, showModal, isFavorited, addFavorite, removeFavorite,
             addWatched(movie);
         }
     };
-
-    // update App's state whenever heart icon is toggled
-    useEffect(updateFavorite, [favorited]);
-
-    // update App's state whenever eye icon is toggled
-    useEffect(updateWatched, [watched]);
 
     return (
         <div
@@ -55,7 +45,7 @@ const MovieCard = ({ movie, showModal, isFavorited, addFavorite, removeFavorite,
 
             <div className="movie-info">
                 <div className="movie-card-button-container">
-                    {favorited ? (
+                    {isFavorited ? (
                         <FavoriteRoundedIcon
                             sx={{
                                 fontSize: "28px",
@@ -63,17 +53,17 @@ const MovieCard = ({ movie, showModal, isFavorited, addFavorite, removeFavorite,
                             }}
                             onClick={(event) => {
                                 event.stopPropagation();
-                                setFavorited(false);
+                                updateFavorite(false);
                             }}></FavoriteRoundedIcon>
                     ) : (
                         <FavoriteBorderRoundedIcon
                             sx={{ fontSize: "28px" }}
                             onClick={(event) => {
                                 event.stopPropagation();
-                                setFavorited(true);
+                                updateFavorite(true);
                             }}></FavoriteBorderRoundedIcon>
                     )}
-                    {watched ? (
+                    {isWatched ? (
                         <VisibilityRoundedIcon
                             sx={{
                                 fontSize: "28px",
@@ -81,14 +71,14 @@ const MovieCard = ({ movie, showModal, isFavorited, addFavorite, removeFavorite,
                             }}
                             onClick={(event) => {
                                 event.stopPropagation();
-                                setWatched(false);
+                                updateWatched(false);
                             }}></VisibilityRoundedIcon>
                     ) : (
                         <VisibilityOffRoundedIcon
                             sx={{ fontSize: "28px" }}
                             onClick={(event) => {
                                 event.stopPropagation();
-                                setWatched(true);
+                                updateWatched(true);
                             }}></VisibilityOffRoundedIcon>
                     )}
                 </div>
