@@ -3,7 +3,7 @@ import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 
 // Handles user input of search term, passing input up to state; includes clear and search buttons
-const SearchBar = (props) => {
+const SearchBar = ({ updateSearch }) => {
 
     // reference to text input
     const searchInputRef = useRef(null);
@@ -11,14 +11,14 @@ const SearchBar = (props) => {
     // update parent's state variable for search term
     const handleSubmitSearch = (event) => {
         event.preventDefault();
-        props.updateSearch(searchInputRef.current.value);
+        updateSearch(searchInputRef.current.value);
     };
 
     // if enter is pressed in text input, update parent's state variable
     const handleInputKeyDown = (event) => {
         if (event.key === "Enter") {
             event.preventDefault();
-            props.updateSearch(searchInputRef.current.value);
+            updateSearch(searchInputRef.current.value);
         }
     };
 
@@ -26,7 +26,7 @@ const SearchBar = (props) => {
     const clearInput = (event) => {
         event.preventDefault();
         searchInputRef.current.value = "";
-        props.updateSearch("");
+        updateSearch("");
     };
 
     return (

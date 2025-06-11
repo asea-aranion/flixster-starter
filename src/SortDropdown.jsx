@@ -1,27 +1,27 @@
 // Displays dropdown for selecting sort option and updates movieData with new sorted array
-const SortDropdown = (props) => {
+const SortDropdown = ({ movieData, setMovieData }) => {
 
     // sort movieData on selection change (depending on which option was just selected)
     const sortMovieData = (event) => {
 
         // sort alphabetically by title
         if (event.target.value === "title") {
-            props.setMovieData(
-                props.movieData.toSorted((a, b) => {
+            setMovieData(
+                movieData.toSorted((a, b) => {
                     return a.title.localeCompare(b.title);
                 }),
             );
         // sort by release date, newest to oldest
         } else if (event.target.value === "date") {
-            props.setMovieData(
-                props.movieData.toSorted((a, b) => {
+            setMovieData(
+                movieData.toSorted((a, b) => {
                     return new Date(b.release_date) - new Date(a.release_date);
                 }),
             );
         // sort by vote average, highest to lowest
         } else if (event.target.value === "votes") {
-            props.setMovieData(
-                props.movieData.toSorted((a, b) => {
+            setMovieData(
+                movieData.toSorted((a, b) => {
                     return b.vote_average - a.vote_average;
                 }),
             );

@@ -1,28 +1,28 @@
 import { useEffect, useState } from "react";
 
 // Navigation sidebar that allows setting of what page is being shown in main area
-const Sidebar = (props) => {
+const Sidebar = ({ page, setPage }) => {
 
     // local state to avoid setting parent's state while this child is rendering
-    const [sidebarPage, setSidebarPage] = useState(props.page);
+    const [sidebarPage, setSidebarPage] = useState(page);
 
     // update parent whenever local state changes
-    useEffect(() => props.setPage(sidebarPage), [sidebarPage]);
+    useEffect(() => setPage(sidebarPage), [sidebarPage]);
 
     return (
         <nav>
             <button
-                className={props.page === "main" ? "selected" : ""}
+                className={page === "main" ? "selected" : ""}
                 onClick={() => setSidebarPage("main")}>
                 Home
             </button>
             <button
-                className={props.page === "favorites" ? "selected" : ""}
+                className={page === "favorites" ? "selected" : ""}
                 onClick={() => setSidebarPage("favorites")}>
                 Favorites
             </button>
             <button
-                className={props.page === "watched" ? "selected" : ""}
+                className={page === "watched" ? "selected" : ""}
                 onClick={() => setSidebarPage("watched")}>
                 Watched
             </button>

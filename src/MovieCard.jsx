@@ -8,19 +8,19 @@ import VisibilityOffRoundedIcon from "@mui/icons-material/VisibilityOffRounded";
 import { useEffect, useState } from "react";
 
 // Represents 1 movie; displays poster, title, and rating average
-const MovieCard = (props) => {
+const MovieCard = ({ movie, showModal, isFavorited, addFavorite, removeFavorite, isWatched, addWatched, removeWatched }) => {
     // own state variables to avoid setting parent's state during rendering
-    const [favorited, setFavorited] = useState(props.isFavorited);
-    const [watched, setWatched] = useState(props.isWatched);
+    const [favorited, setFavorited] = useState(isFavorited);
+    const [watched, setWatched] = useState(isWatched);
 
     // toggles whether this movie is in App's favorites array
     const updateFavorite = () => {
         // if just unfavorited, remove from array
         if (!favorited) {
-            props.removeFavorite(props.movie);
+            removeFavorite(movie);
             // otherwise, add to array
         } else {
-            props.addFavorite(props.movie);
+            addFavorite(movie);
         }
     };
 
@@ -28,10 +28,10 @@ const MovieCard = (props) => {
     const updateWatched = () => {
         // if just marked as not watched, remove from array
         if (!watched) {
-            props.removeWatched(props.movie);
+            removeWatched(movie);
             // otherwise, add to array
         } else {
-            props.addWatched(props.movie);
+            addWatched(movie);
         }
     };
 
@@ -44,13 +44,13 @@ const MovieCard = (props) => {
     return (
         <div
             className="movie-card"
-            onClick={() => props.showModal(props.movie.id)}>
-            {props.movie.poster_path == null ? (
+            onClick={() => showModal(movie.id)}>
+            {movie.poster_path == null ? (
                 <div className="card-background" />
             ) : (
                 <img
-                    src={`https://image.tmdb.org/t/p/w780/${props.movie.poster_path}`}
-                    alt={`A poster for ${props.movie.title}`}></img>
+                    src={`https://image.tmdb.org/t/p/w780/${movie.poster_path}`}
+                    alt={`A poster for ${movie.title}`}></img>
             )}
 
             <div className="movie-info">
@@ -92,16 +92,16 @@ const MovieCard = (props) => {
                             }}></VisibilityOffRoundedIcon>
                     )}
                 </div>
-                <h3>{props.movie.title}</h3>
+                <h3>{movie.title}</h3>
                 <div className="rating-info">
-                    {props.movie.vote_average >= 7 ? (
+                    {movie.vote_average >= 7 ? (
                         <ArrowUpwardRoundedIcon></ArrowUpwardRoundedIcon>
-                    ) : props.movie.vote_average >= 5 ? (
+                    ) : movie.vote_average >= 5 ? (
                         <HorizontalRuleRoundedIcon></HorizontalRuleRoundedIcon>
                     ) : (
                         <ArrowDownwardRoundedIcon></ArrowDownwardRoundedIcon>
                     )}
-                    <p>{props.movie.vote_average}</p>
+                    <p>{movie.vote_average}</p>
                 </div>
             </div>
         </div>

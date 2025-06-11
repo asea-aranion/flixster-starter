@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import CircleRoundedIcon from "@mui/icons-material/CircleRounded";
 
 // Overlay and modal with further movie details
-const Modal = (props) => {
+const Modal = ({ movieId, hideModal }) => {
 
     // reference to transparent overlay div behind modal
     const overlayRef = useRef(null);
@@ -16,20 +16,20 @@ const Modal = (props) => {
     // hide modal if overlay itself (area outside modal) is clicked
     const handleOverlayClick = (event) => {
         if (event.target == overlayRef.current) {
-            props.hideModal();
+            hideModal();
         }
     };
 
     // get detailed movie data and YouTube id for a trailer from TMDb
     const fetchMovieDetails = () => {
-        if (props.movieId != null) {
+        if (movieId != null) {
 
             // clear old modal data
             setDetails(null);
             setVideoKey(null);
 
             // set up and fetch from details endpoint (runtime not accessible from now playing or search)
-            const url = `https://api.themoviedb.org/3/movie/${props.movieId}?api_key=${import.meta.env.VITE_API_KEY}`;
+            const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${import.meta.env.VITE_API_KEY}`;
             const options = {
                 method: "GET",
                 headers: {
@@ -43,7 +43,7 @@ const Modal = (props) => {
                 .catch((error) => `Error fetching movie details in modal: ${console.error(error)}`);
 
             // set up and fetch from videos endpoint
-            const videosUrl = `https://api.themoviedb.org/3/movie/${props.movieId}/videos?language=en-US&api_key=${import.meta.env.VITE_API_KEY}`;
+            const videosUrl = `https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US&api_key=${import.meta.env.VITE_API_KEY}`;
 
             fetch(videosUrl, options)
                 .then((response) => response.json())
@@ -74,15 +74,15 @@ const Modal = (props) => {
     };
 
     // reload data whenever movie being displayed in modal changes
-    useEffect(fetchMovieDetails, [props.movieId]);
+    useEffect(fetchMovieDetails, [movieId]);
 
     // display modal after movie card is clicked (sets movieId) and after data is fetched
-    if (props.movieId != null && details != null) {
+    if (movieId != null && details != null) {
         return (
             <div
                 className="overlay"
                 ref={overlayRef}
-                style={{ display: props.movieId == null ? "none" : "block" }}
+                style={{ display: movieId == null ? "none" : "block" }}
                 onClick={handleOverlayClick}>
                 <div className="modal">
                     <img
