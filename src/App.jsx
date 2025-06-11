@@ -9,6 +9,7 @@ import Sidebar from "./Sidebar";
 import NoClickMovieList from "./NoClickMovieList";
 
 const App = () => {
+    // user-entered search text (passed to SearchBar)
     const [searchTerm, setSearchTerm] = useState("");
 
     // next page with new results for now playing or search
@@ -29,18 +30,22 @@ const App = () => {
     // current page (main/favorites/watched)
     const [page, setPage] = useState("main");
 
+    // append movie to favorites array, updating state
     const addToFavorites = (movie) => {
         setFavorites((oldElements) => [...oldElements, movie]);
     };
 
+    // remove movie from favorites array, updating state
     const removeFromFavorites = (movie) => {
         setFavorites(favorites.filter((element) => element !== movie));
     };
 
+    // append movie to watched array, updating state
     const addToWatched = (movie) => {
         setWatched((oldElements) => [...oldElements, movie]);
     };
 
+    // remove movie from watched array, updating state
     const removeFromWatched = (movie) => {
         setWatched(watched.filter((element) => element !== movie));
     };
@@ -67,7 +72,7 @@ const App = () => {
                 setMovieData([...currentMovies, ...json.results]);
                 setPageNum(currentPage + 1);
             })
-            .catch((error) => console.error(error));
+            .catch((error) => `Error fetching now playing movies: ${console.error(error)}`);
     };
 
     // fetch currentPage of search results, display currentMovies + new results
@@ -86,7 +91,7 @@ const App = () => {
                 setMovieData([...currentMovies, ...json.results]);
                 setPageNum(currentPage + 1);
             })
-            .catch((error) => console.error(error));
+            .catch((error) => `Error fetching search results: ${console.error(error)}`);
     };
 
     // fetch and display currentPage of either now playing movies or search results, appending to currentMovies
@@ -108,11 +113,13 @@ const App = () => {
         }
     };
 
+    // trigger modal to fetch details and show; disable scrolling behind it
     const showModal = (movieId) => {
         setModalDataId(movieId);
         document.querySelector("body").style.overflow = "hidden";
     };
 
+    // hide modal and enable scrolling
     const hideModal = () => {
         setModalDataId(null);
         document.querySelector("body").style.overflow = "scroll";

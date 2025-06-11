@@ -40,7 +40,7 @@ const Modal = (props) => {
             fetch(url, options)
                 .then((response) => response.json())
                 .then((json) => setDetails(json))
-                .catch((error) => console.error(error));
+                .catch((error) => `Error fetching movie details in modal: ${console.error(error)}`);
 
             // set up and fetch from videos endpoint
             const videosUrl = `https://api.themoviedb.org/3/movie/${props.movieId}/videos?language=en-US&api_key=${import.meta.env.VITE_API_KEY}`;
@@ -60,7 +60,7 @@ const Modal = (props) => {
                         }
                     }
                 })
-                .catch((error) => console.error(error));
+                .catch((error) => `Error fetching movie trailer: ${console.error(error)}`);
         }
     };
 

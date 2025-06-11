@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import MovieCard from "./MovieCard";
 
 // Container for movie cards and Load More button; handles data fetching
