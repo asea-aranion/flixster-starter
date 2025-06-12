@@ -28,6 +28,24 @@
     }
 }
 
+@media (max-width: 430px) {
+    nav button {
+        padding: 1.5rem 0 !important;
+    }
+}
+
+@media (max-width: 1060px) {
+    nav button p {
+        display: none !important;
+    }
+    nav button svg {
+        display: inline-block !important;
+    }
+    nav button {
+        justify-content: center !important;
+    }
+}
+
 h1 {
     color: white;
     margin: 0;
@@ -69,15 +87,15 @@ main {
 }
 
 .page-container {
-    flex-grow: 5;
     min-height: 100vh;
-    width: calc(100vw - 20rem);
+    width: 85vw;
 }
 
 nav {
     background-color: rgb(51, 52, 106);
     display: flex;
     flex-flow: column nowrap;
+    width: 15vw;
 }
 
 nav button {
@@ -88,9 +106,14 @@ nav button {
     font-family: inherit;
     font-weight: bold;
     color: white;
-    font-size: 24px;
+    font-size: 20px;
     width: 100%;
     font-family: "Jura", sans-serif;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 nav button.selected {
@@ -296,6 +319,7 @@ nav button.selected {
     position: fixed;
     top: 10vh;
     left: 10vw;
+    overflow-x: hidden;
     overflow-y: scroll;
     background-color: black;
     box-shadow: 0px 10px 10px black;
@@ -343,6 +367,8 @@ nav button.selected {
 .modal-info iframe {
     border: none;
     margin: 2rem;
+    width: 40vw;
+    height: 22.5vw;
 }
 
 .runtime-release-container p {
@@ -351,7 +377,7 @@ nav button.selected {
 
 .runtime-release-container {
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     justify-content: center;
     gap: 1rem;
     align-items: center;
