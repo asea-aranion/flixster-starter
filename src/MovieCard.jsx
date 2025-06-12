@@ -5,6 +5,7 @@ import FavoriteBorderRoundedIcon from "@mui/icons-material/FavoriteBorderRounded
 import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded";
 import VisibilityRoundedIcon from "@mui/icons-material/VisibilityRounded";
 import VisibilityOffRoundedIcon from "@mui/icons-material/VisibilityOffRounded";
+import NoPhotographyRoundedIcon from "@mui/icons-material/NoPhotographyRounded";
 
 // Represents 1 movie; displays poster, title, and rating average
 const MovieCard = ({ movie, showModal, isFavorited, addFavorite, removeFavorite, isWatched, addWatched, removeWatched }) => {
@@ -36,7 +37,9 @@ const MovieCard = ({ movie, showModal, isFavorited, addFavorite, removeFavorite,
             className="movie-card"
             onClick={() => showModal(movie.id)}>
             {movie.poster_path == null ? (
-                <div className="card-background" />
+                <div className="card-background">
+                    <NoPhotographyRoundedIcon sx={{fontSize: "56px"}}></NoPhotographyRoundedIcon>
+                </div>
             ) : (
                 <img
                     src={`https://image.tmdb.org/t/p/w780/${movie.poster_path}`}

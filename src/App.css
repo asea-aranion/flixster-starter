@@ -153,6 +153,14 @@ nav button.selected {
     width: 15vw;
     height: 22.5vw;
     background-color: white;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-background {
+    color: rgb(101, 96, 171);
 }
 
 .movie-card-button-container {
