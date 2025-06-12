@@ -2,7 +2,7 @@
 
 Submitted by: **Leia Spagnola**
 
-Estimated time spent: **#** hours spent in total
+Estimated time spent: **16** hours spent in total
 
 Deployed Application (**required**): [Flixster Deployed Site](https://flixster-starter-cg6l.onrender.com)
 
@@ -59,10 +59,10 @@ Deployed Application (**required**): [Flixster Deployed Site](https://flixster-s
     - [x] Search bar
     - [x] Movie grid
     - [x] Footer section
-    - [ ] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: To ease the grading process, please use the [color contrast checker](https://webaim.org/resources/contrastchecker/) to demonstrate to the grading team that text and background colors on your website have appropriate contrast. The Contrast Ratio should be above 4.5:1 and should have a green box surrounding it. 
+    - [x] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: To ease the grading process, please use the [color contrast checker](https://webaim.org/resources/contrastchecker/) to demonstrate to the grading team that text and background colors on your website have appropriate contrast. The Contrast Ratio should be above 4.5:1 and should have a green box surrounding it. 
   - [x] **Deployment**
   - [x] Website is deployed via Render.
-  - [ ] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: For ease of grading, please use the deployed version of your website when creating your walkthrough. 
+  - [x] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: For ease of grading, please use the deployed version of your website when creating your walkthrough. 
 
 #### STRETCH FEATURES
 
@@ -100,19 +100,24 @@ Deployed Application (**required**): [Flixster Deployed Site](https://flixster-s
 
 ### Walkthrough Video
 
-`TODO://` Add the embedded URL code to your animated app walkthrough below, `ADD_EMBEDDED_CODE_HERE`. Make sure the video or gif actually renders and animates when viewing this README. Ensure your walkthrough showcases the presence and/or functionality of all features you implemented above (check them off as you film!). Pay attention to any **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS** checkboxes listed above to ensure graders see the full functionality of your website! (🚫 Remove this paragraph after adding walkthrough video)
-
-`ADD_EMBEDDED_CODE_HERE`
+<div>
+    <a href="https://www.loom.com/share/ae74b0af027c40afb15d1766f4406c2a">
+      <p>Flixster - 12 June 2025 - Watch Video</p>
+    </a>
+    <a href="https://www.loom.com/share/ae74b0af027c40afb15d1766f4406c2a">
+      <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/ae74b0af027c40afb15d1766f4406c2a-2054c2bfb5199fdf-full-play.gif">
+    </a>
+  </div>
 
 ### Reflection
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-Add your response here
+Yes, I felt that class mostly prepared me for the project. While we went over how to fetch data, it did take some time to find the documentation for exactly how to use the TMDb API. I also found useRef() to be very helpful in parts of the project, such as the search bar, and had to research this on my own.
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
   
-Add your response here
+I would have continued making the layout cleaner, ensuring the search bar, sort, and movie cards are always aligned correctly on any screen size. I would also have investigated utilizing context and useReducer() to possibly reduce the amount of code in my components.
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
@@ -124,4 +129,4 @@ Add your response here
 
 ### Shout out
 
-Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.
+Virsaviya was always willing to help or redirect me to someone who could answer my question if she was unsure.
