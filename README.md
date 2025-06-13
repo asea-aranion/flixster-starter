@@ -121,7 +121,7 @@ I would have continued making the layout cleaner, ensuring the search bar, sort,
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-Add your response here
+My demo went very well and I was able to show all the features and interesting parts of the project. I also got to share with my peers how I had the movie details rise up from below the movie card. Some of my peers allowed users to hide and show the sidebar, which I thought was a great idea. 
 
 ### Open-source libraries used
 
